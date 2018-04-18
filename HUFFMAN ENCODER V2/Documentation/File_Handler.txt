@@ -1,0 +1,46 @@
+class File_Handler
+{
+	char* ipfpath;
+	char* fname;
+	char* hedir;
+	int hedir_size;
+	//map<char,node*>& letterFreqMap;// should be initialised in constructor's initializer list
+	
+public:
+	map< char , node* >& readInputfromFile(map< char, node* >&) ;
+	bool serializetree_wrapper(node*);
+	void serializetree(node* , ofstream& );
+	//saves a tree in preorder traversal using + as marker for null
+	char* createHEdir();
+	void set_tree_path();
+	void set_compfile_path();
+	bool makeCompressedFile(map< char,int >&,map< char,int >&);
+
+
+	File_Handler(/*map<char,node*>& t,*/char *x) /*letterFreqMap(t),*/  
+	{
+		ipfpath=x;
+		fname=NULL;
+		hedir=NULL;
+		hedir_size=-1;
+	}
+};
+
+ipfpath -> name of file to be compressed
+
+fname -> not known
+
+hedir -> folder path for H.E. files
+
+hedir_size -> size of hedir
+
+letterFreqMap -> a map with a node for each letter containing it's frequency
+
+
+
+map< char , node* >& readInputfromFile(map< char, node* >&) -> returns an map with a node for each letter containing it's frequency
+
+void serializetree(node* , ofstream& ) -> saves a tree in preorder traversal using + as marker for null
+
+bool serializetree_wrapper(node*) -> opens the output tree file stream and calls serializetree
+
